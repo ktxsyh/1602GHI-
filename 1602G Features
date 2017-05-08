@@ -1,0 +1,7 @@
+  The ST7032 dot-matrix liquid crystal display controller and driver LSI displays alphanumeric,Japanese kana characters and symbols. It can
+ be configured to drive a dot_matrix liquid crystal display under the control of a 4-/ 8-bit or serial interface microprocessor.Since all t
+ -he functions such as display RAM.character generrator,and liquid crystal driver ,required for driving a dot-matrix liquid crystal display
+ are internally provided on one chip, a minimal system can be interfaced with this controller/driver.
+  The ST7032 character generator ROM is extended to generate 256 5*8dot character fonts for a total of 256 different character fonts.The l
+  -ow power supply (2.7v to 5.5v) of the ST7032 is suitable for any portable battery-driven product requiring low power dissipation.  The ST7032 LCD driver consists of 17 common signal drivers and 80 segment signal drivers.The maximunm display RAM size can be erther 80
+   character  in 1-lines display or 40 characters in 2-line NO extra drvers can be cascaded.
