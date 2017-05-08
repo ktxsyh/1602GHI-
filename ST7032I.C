@@ -138,6 +138,178 @@ void start ()
  SCL = 0;
  nops ();
 }
+/*********************************/
+
+/********************************/
+void stop ()
+{
+ SCL = 0;
+ nops ();
+ SDA = 0;
+ nops ();
+ SCL = 1;
+ nops ();
+ SDA = 1;
+ nops ();
+}
+/*******************************/
+
+/******************************/
+void Write_byte (unchar dat)
+{
+   unchar i;
+   for (i=0;i<8;i++)
+    {
+       nops ();
+       SCL = 0;
+       if ((dat<<i)&0x80)
+         SDA = 1;
+       else
+         SDA = 0;
+      _nop_ ();
+     SCL = 1;
+     nops ();
+     SCL = 0;
+    }
+     SDA = 1;
+     nops ();
+     SCL = 1;
+     nops ();
+     while (1 == SDA)
+     {
+       nops ();
+     }
+     SCL = 0;
+     nops ();
+}
+/*******************************/
+
+/*******************************/
+bit ACK ()
+{
+  bit flag;
+  SDA = 1;
+  nops ();
+  SCL = 1;
+  nops ();
+  flag = SDA;
+  SCL = 0;
+  nops ();
+  return (flag);
+}
+/*******************************/
+
+/******************************/
+void Write_Command (unchar dat)
+{
+    Write_byte (0x80);
+    Write_byte (dat);    
+}
+/*************************/
+
+/****************************/
+void Write_Data (unchar dat1)
+{
+  Write_byte (dat1);
+}
+/***************************/
+
+
+/******************************/
+void WriteCgram (unchar *p)
+{
+    unchar i;
+    start ();
+    Write_byte (0x7c);
+    Write_Command (0x20);
+    Write_Command (0x40);
+    Write_byte (0x40);
+    for (i=0; i<48; i++)
+      {
+          Write_Data (*p++);        
+      } 
+     stop ();
+}
+/******************************/
+
+/*******************************/
+void Test (dat)
+{
+   unint i,j;
+  
+   start ();
+   Write_byte (0x7c);
+   Write_Command (0x39);
+   Write_Command (0x80);
+   Write_byte (0x40);
+   for (i=0; i<16; i++)
+     {
+       Write_Data (dat);
+     }
+   stop ();
+  
+   start ();
+   Write_byte (0x7c);
+   Write_Command (0x39);
+   Write_Command (0xc0);
+   Write_byte (0x40);
+   for (j=0; j<16; j++)
+     {
+       Write_Data (dat);
+     }
+    stop ();
+}
+/***********************************/
+
+/***********************************/
+void displaychar (unsigned char *p)
+{
+
+  unint i,j;
+  
+  start ();
+  Write_byte (0x7c);
+  Write_Command (0x38);
+  Write_Command (0x80);
+  Write_byte (0x40);
+  for (i=0; i<16; i++)
+    {
+      Write_Data (*p++);
+    }
+  stop ();
+  
+  start ();
+  Write_byte (0x7c);
+  Write_Command (0x38);
+  Write_Command (0xc0);
+  Wirte_byte (0x40);
+  for (j=0; j<16; j++)
+   {
+      Write_Data (*p++);  
+   }
+  stop ();
+  
+  Delay_ms (100);
+}
+/*******************************/
+
+/*******************************/
+void Inter_code ()
+{
+  start ();
+  
+  Write_byte (0x7c);
+  Write_Command (0x38);
+  Write_Command (0x39);
+  Write_Command (0x14);
+  Write_Command (0x78);
+  Write_Command (0x5d);
+  Write_Command (0x6a);
+  Write_Command (0x0c);
+  
+  stop ();
+}
+
 
 
 
