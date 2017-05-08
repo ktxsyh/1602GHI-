@@ -98,6 +98,46 @@ void main ()
 }
 
 
+/*****************************************/
+void Delay_ms (unint tt)
+{
+    unchar TT;
+    while (--tt)
+      for (TT=0; TT<100; TT++)
+        ;
+}
+/***************************************/
+
+/**************************************/
+void Pause ()
+{
+  while (AOUTOB==1 & STEP==0)
+    {}
+    if (STEP == 1)
+    {
+      Delay_ms (10);
+      while (AOUTOB == 0)
+      {}
+    }
+    else if (AOUTOB == 1)
+    {
+      Delay_ms (10);
+    }
+}
+/************************************/
+
+/***********************************/
+void start ()
+{
+ SDA = 1;
+ nops ();
+ SCL = 1;
+ nops ();
+ SDA = 0;
+ nops ();
+ SCL = 0;
+ nops ();
+}
 
 
 
