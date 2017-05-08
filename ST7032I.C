@@ -298,14 +298,14 @@ void Inter_code ()
 {
   start ();
   
-  Write_byte (0x7c);
-  Write_Command (0x38);
-  Write_Command (0x39);
-  Write_Command (0x14);
-  Write_Command (0x78);
-  Write_Command (0x5d);
-  Write_Command (0x6a);
-  Write_Command (0x0c);
+  Write_byte (0x7c);   //slave address
+  Write_Command (0x38);  //set function  D=1 DH=0 IS=0 
+  Write_Command (0x39);   //set function D=1 DH=0 IS=1
+  Write_Command (0x14);   //set BAIS =1/5 OSC
+  Write_Command (0x78);   //set voltage follower
+  Write_Command (0x5d);   //set Icon = 0 Bon = 1
+  Write_Command (0x6a);   //set  Fon= 1 Ra/Rb = 4
+  Write_Command (0x0c);   //set D =1 C =0 B = 0   dispaly on
   
   stop ();
 }
