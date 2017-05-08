@@ -1,7 +1,14 @@
-  The ST7032 dot-matrix liquid crystal display controller and driver LSI displays alphanumeric,Japanese kana characters and symbols. It can
+ A.  The ST7032 dot-matrix liquid crystal display controller and driver LSI displays alphanumeric,Japanese kana characters and symbols. It can
  be configured to drive a dot_matrix liquid crystal display under the control of a 4-/ 8-bit or serial interface microprocessor.Since all t
  -he functions such as display RAM.character generrator,and liquid crystal driver ,required for driving a dot-matrix liquid crystal display
  are internally provided on one chip, a minimal system can be interfaced with this controller/driver.
-  The ST7032 character generator ROM is extended to generate 256 5*8dot character fonts for a total of 256 different character fonts.The l
-  -ow power supply (2.7v to 5.5v) of the ST7032 is suitable for any portable battery-driven product requiring low power dissipation.  The ST7032 LCD driver consists of 17 common signal drivers and 80 segment signal drivers.The maximunm display RAM size can be erther 80
+ B.  The ST7032 character generator ROM is extended to generate 256 5*8dot character fonts for a total of 256 different character fonts.The l
+  -ow power supply (2.7v to 5.5v) of the ST7032 is suitable for any portable battery-driven product requiring low power dissipation.  
+ C  The ST7032 LCD driver consists of 17 common signal drivers and 80 segment signal drivers.The maximunm display RAM size can be erther 80
    character  in 1-lines display or 40 characters in 2-line NO extra drvers can be cascaded.
+   
+Translate:
+ST7032点阵液晶显示控制驱动器，芯片集成了日文字模，和图形字模，字模和数字通用。芯片集成了可配置的点阵液晶显示器，可通过微型控制器进行4/8比特串行数据通讯。
+由于所有的函数列如，显示RAM、字符方生器、液晶驱动、都集成在芯片上，所以最小系统可以直接通过外部接口控制和驱动芯片。
+ST7032的字符发生器支持最多扩展256个5*8的点阵图形在不同的RAM空间中。ST7032的低电压工作方式使得他适用与不同的电池驱动。
+ST7032液晶显示驱动包括17个com数字驱动线和80个seg数字驱动线。最大的显示RAM尺寸可支持一行显示80个字符或者两行40个字符。
