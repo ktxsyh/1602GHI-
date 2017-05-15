@@ -201,3 +201,64 @@ void Test (unchar dat)
     }
     Delay_ms (100);
 }
+
+void Display (unchar dat1,unchar dat2)
+{
+    unint i,j,k;
+    unchar page,column;
+    page = 0xb0;
+    j = vertical / 2;
+    k = horizontal / 8;
+    for (i = 0;i <k ;i++)
+    {
+        Write_Command (0x40); //Display Start Line set
+        Write_Command (page++);  //page address set
+        Write_Command (0x10);   //column address set
+        Write_Command (0x00);   //turn on dispaly
+        
+        for (column = 0;column <j; column ++)
+        {
+          Write_Data (dat1);
+          Write_Data (dat2);
+        }
+    }
+    Delay_ms (100);
+}
+
+void Displaychar (unchar *P)
+{
+    unint i,k;
+    unchar page,col;
+    page = 0xb0;
+    k = horizontal/8;
+    
+    for (i=0; i<k; i++)
+    {
+        Write_Command (0x40);
+        Write_Command (page++);
+        Write_Command (0x10);
+        Write_Command (0x00);
+        
+        for (col = 0;col <vertical ;col++)
+        {
+          Write_Data (*P++);
+        }
+    }
+        Delay_ms (100);
+}
+
+void Inter_code ()
+{
+    Write_Command (0xe2);
+    
+    Write_Command (0xa2);
+    Write_Command (0xa0);
+    Write_Command (0xc0);
+    
+    Write_Command (0x25);
+    Write_Command (0x81);
+    Write_Command (Vop);
+    
+    Write_Command (0x2f);
+    Write_Command (0xaf);
+}
