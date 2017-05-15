@@ -189,10 +189,10 @@ void Test (unchar dat)
     
     for (i=0; i<k; i++)
     {
-        Write_Command (0x40);
-        Write_Command (page++);
-        Write_Command (0x10);
-        Write_Command (0x00);
+        Write_Command (0x40);   //Display Start Line Set 
+        Write_Command (page++);   //Page Address Set
+        Write_Command (0x10);   //Column Address Set 
+        Write_Command (0x00); //Status Read busy = '0' ;ADC = '0' ;Dispaly on ; Operating State
         
         for (column = 0; column<vertical; column++)
         {
