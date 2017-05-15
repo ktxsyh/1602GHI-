@@ -249,16 +249,15 @@ void Displaychar (unchar *P)
 
 void Inter_code ()
 {
-    Write_Command (0xe2);
+    Write_Command (0xe2);   //Reset Command 
+    Write_Command (0xa2);   //LCD Bias Set,[0xa2] is 1/9 bias,[0xa3] is 1/7 bias 
+    Write_Command (0xa0);   //ADC Select (Segment Driver Direction Select),0xa0 is noramal ,0xa1 is reverse
+    Write_Command (0xc0);   //LCD Command output mode selection ,[0xc0] is normal direction [0xc8] is reverse directon 
     
-    Write_Command (0xa2);
-    Write_Command (0xa0);
-    Write_Command (0xc0);
+    Write_Command (0x25);   //Set Vo voltage regulator internal resistor ratio set Rb/Ra = 5. 
+    Write_Command (0x81);   //Electronic volume mode set,select the volume register
+    Write_Command (Vop);    //set Electronic value
     
-    Write_Command (0x25);
-    Write_Command (0x81);
-    Write_Command (Vop);
-    
-    Write_Command (0x2f);
-    Write_Command (0xaf);
+    Write_Command (0x2f);   //Power Control setting [2f] select internal power supply operating mode
+    Write_Command (0xaf);  //trun on the lcd dispaly,End initialize...
 }
