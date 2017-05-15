@@ -65,6 +65,45 @@ void main ()
   PSB = 1; //This pin configures the interface to be parallel or serial .PSB is "H".parallel data ,is "L" serial data .
   
   //P0=0X00;
+  Inter_code ();
+  while (1)
+  {
+    Test (0xff);
+    Delay_ms (1000);
+    Pause ();
+    
+    Test (0x00);
+    Delay_MS (1000);
+    Pause ();
+    
+    Display (0xaa,0x55);
+    Delay_ms (1000);
+    Pause ();
+    
+    Display (0xff,0x00);
+    Delay_ms (1000);
+    Pause ();
+   
+    Dispalay (0xaa,0xaa);
+    Delay_ms (1000);
+    Pause ();
+    
+    Displaychar (pic1);
+    Delay_ms (1000);
+    Pause ();
+    
+    Displaychar (pic2);
+    Delay_ms (1000);
+    Pause ();
+    
+    Displaychar (pic3);
+    Delay_ms (1000);
+    Pause ();
+    
+    Displaychar (pic4);
+    Delay_ms (1000);
+    Pause ();    
+  }
   }
 }
 
