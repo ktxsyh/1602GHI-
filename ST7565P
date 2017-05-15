@@ -192,8 +192,8 @@ void Test (unchar dat)
     {
         Write_Command (0x40);   //Display Start Line Set 
         Write_Command (page++);   //Page Address Set
-        Write_Command (0x10);   //Column Address Set 
-        Write_Command (0x00); //Status Read busy = '0' ;ADC = '0' ;Dispaly on ; Operating State
+        Write_Command (0x10);   //set column high address  
+        Write_Command (0x00); //Set column low address
         
         for (column = 0; column<vertical; column++)
         {
