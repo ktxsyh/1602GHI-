@@ -134,6 +134,70 @@ void Pause ()
           Write_Command (++Vop);
         }
       }
+      if (DOWN == 1)
+      {
+        Delay_ms (1000);
+        if (Vop > 0x00)
+        {
+          Write_Command (0x81);
+          Write_Command (--Vop);
+        }
+      }
+    }
+    if (STEP == 1)
+    {
+      Delay_ms (10);
+      while (AOUTOB == 0)
+      ;
+    }
+    else if (AOUTOB == 1)
+    {
+    Delay_ms ();
     }
 }
 
+void Write_Command (unchar dat)
+{
+    A0 = 0;
+    E = 1;
+    RW = 0;
+    CS = 0;
+    P1 = dat;
+    E = 0;
+    CS = 1;
+    RW = 1;
+}
+
+void Write_Data (unchar dat)
+{
+    A0 = 1;
+    RW = 0;
+    E = 1;
+    CS = 0;
+    P1 = dat;
+    E = 0;
+    CS = 1;
+    RW = 1;
+}
+
+void Test (unchar dat)
+{
+    unint i,k;
+    unchar page,column;
+    page = 0xb0;
+    k = horizontal/8;
+    
+    for (i=0; i<k; i++)
+    {
+        Write_Command (0x40);
+        Write_Command (page++);
+        Write_Command (0x10);
+        Write_Command (0x00);
+        
+        for (column = 0; column<vertical; column++)
+        {
+            Write_Data (dat);
+        }
+    }
+    Delay_ms (100);
+}
