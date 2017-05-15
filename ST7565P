@@ -91,6 +91,7 @@ void main ()
     //Frame ();
     //Delay_ms ();
     //Pause ();
+    
     Displaychar (pic1);
     Delay_ms (1000);
     Pause ();
@@ -110,6 +111,29 @@ void main ()
   }
 }
 
+/******************Ms Delay****************/
+void Delay_ms (unint tt)
+{
+  unchar TT;
+  while (--tt)
+    for (TT=0;TT<100;TT++)
+      ;
+}
 
-
+/******************Aout OR Step*************/
+void Pause ()
+{
+  while (AOUTB==1 & STEP ==0)
+    {
+      if (UP == 1)
+      {
+        Delay_ms (1000);
+        if (Vop <0x3f)
+        {
+          Write_Command (0x81);
+          Write_Command (++Vop);
+        }
+      }
+    }
+}
 
