@@ -180,6 +180,7 @@ void Write_Data (unchar dat)
     RW = 1;
 }
 
+、****************Test lcd *****************/
 void Test (unchar dat)
 {
     unint i,k;
@@ -202,6 +203,7 @@ void Test (unchar dat)
     Delay_ms (100);
 }
 
+、***********display 2 page *************/
 void Display (unchar dat1,unchar dat2)
 {
     unint i,j,k;
