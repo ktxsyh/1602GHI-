@@ -32,14 +32,41 @@ void Test ();
 void Displaychar (unchar *p);
 void Pause ();
 
+unchar code pic1[] = 
+{
+/* 长度*宽度 128 * 64 this pic size 1024 Bytes */ 
+}
 
+unchar code pic2[] =
+{
+/* 长度*宽度 128 * 64 this pic size 1024 Bytes */ 
+}
 
+unchar code pic3[]=
+{
+/* 长度*宽度 128*64 this pic size 1024 Bytes */
+}
 
+unchar code pic4[]=
+{
+/* 长度*宽度 128*64 this pic size 1024 Bytes */
+}
 
-
-
-
-
+void main ()
+{
+  RES = 1; //when /RES is set to "L",the register settings are initialized (cleared). The reset operation is performed by the /RES signal level.
+  Delay_ms (10);
+  RES = 0; //Reset all settings,clear all register
+  Delay_ms (50);
+  RES = 1;
+  Delay_ms (100);
+  
+  C86 = 1; //C86 = "H"; 6800 series MPU interface. It is pull "L" set 8080 serise MPU interface.
+  PSB = 1; //This pin configures the interface to be parallel or serial .PSB is "H".parallel data ,is "L" serial data .
+  
+  //P0=0X00;
+  }
+}
 
 
 
