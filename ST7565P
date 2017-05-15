@@ -1,0 +1,46 @@
+#include <reg51.h>
+#include <intrins.h>
+#include <stdio.h>
+
+#define unchar unsigned char 
+#define unint unsigned int
+#define Horizontal  64
+#define Vertical 128
+
+unchar Vop = 0x2a;
+
+sbit A0 = P3^0;
+sbit CS = P3^1;
+sbit RW = P3^7;
+sbit RES = P3^2;
+sbit PSB = P3^5;
+sbit C86 = P3^6;
+sbit E = P3^4;
+
+sbit AOUTOB = P2^1;
+sbit STEP = P2^0;
+sbit UP = P0^0;
+sbit DOWN = P0^1;
+
+void Write_Data (unchar dat);
+void Write_Command (unchar dat);
+void Inter_code ();
+void Delay_ms (unint tt);
+void Display (unchar dat1,unchar dat2);
+void Test ();
+//void Frame ();
+void Displaychar (unchar *p);
+void Pause ();
+
+
+
+
+
+
+
+
+
+
+
+
+
