@@ -88,6 +88,9 @@ void main ()
     Delay_ms (1000);
     Pause ();
     
+    //Frame ();
+    //Delay_ms ();
+    //Pause ();
     Displaychar (pic1);
     Delay_ms (1000);
     Pause ();
